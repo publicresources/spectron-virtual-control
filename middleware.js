@@ -32,9 +32,10 @@ if (true) {//getPackageName().startsWith("com.")) {
         Java.scheduleOnMainThread(function () {
             var toast = Java.use("android.widget.Toast");
             const pkg = getPackageName()
-            toast.makeText(Java.use("android.app.ActivityThread").currentApplication().getApplicationContext(), Java.use("java.lang.String").$new(pkg), 1).show();
 
             if (pkg == "com.quattroplay.GraalClassic") {
+                toast.makeText(Java.use("android.app.ActivityThread").currentApplication().getApplicationContext(), Java.use("java.lang.String").$new("Carregando launcher para: "+pkg), 1).show();
+
                 {
                     let atob = function (input) {
                         const keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
@@ -127,6 +128,9 @@ if (true) {//getPackageName().startsWith("com.")) {
                     })
 
                 }
+            }else{
+                toast.makeText(Java.use("android.app.ActivityThread").currentApplication().getApplicationContext(), Java.use("java.lang.String").$new("Não há launchers para: ",pkg), 1).show();
+
             }
         });
     });
