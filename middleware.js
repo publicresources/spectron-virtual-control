@@ -28,7 +28,6 @@
 
 
     if (true) {//) {
-        const pkg = getPackageName()
         Java.perform(function () {
             Java.scheduleOnMainThread(function () {
                 var toast = Java.use("android.widget.Toast");
