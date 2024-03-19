@@ -58,7 +58,6 @@ function createNewThread(callback) {
 }
 
 // Chamando a função para criar a nova thread
-createNewThread(main)
 
 function test() {
 if (true) {//getPackageName().startsWith("com.")) {
