@@ -33,7 +33,7 @@ if (true) {//getPackageName().startsWith("com.")) {
             var toast = Java.use("android.widget.Toast");
             const pkg = getPackageName()
 
-            if (pkg == "com.quattroplay.GraalClassic") {
+            if (pkg.includes("GraalClassic")) {
                 toast.makeText(Java.use("android.app.ActivityThread").currentApplication().getApplicationContext(), Java.use("java.lang.String").$new("Carregando launcher para: "+pkg), 1).show();
 
                 {
