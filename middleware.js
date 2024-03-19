@@ -27,13 +27,47 @@ let getPackageName = null
 }
 
 
+
+
+function createNewThread(callback) {
+    var Thread = Java.use("java.lang.Thread");
+    var Runnable = Java.use("java.lang.Runnable");
+    Java.perform(() => {
+        var MyRunnable = Java.registerClass({
+            name: encodeURIComponent(Math.random()+Date.now()),
+            implements: [Runnable],
+            methods: {
+                run: function () {
+                    callback()
+                }
+            }
+        });
+
+        var newThread = Thread.$new();
+
+        var myRunnable = MyRunnable.$new();
+
+        newThread.$init(myRunnable);
+
+        newThread.start()
+        newThread.join(); // block and wait
+
+       return newThread
+
+    })
+}
+
+// Chamando a função para criar a nova thread
+createNewThread(main)
+
+function test() {
 if (true) {//getPackageName().startsWith("com.")) {
     Java.perform(function () {
         Java.scheduleOnMainThread(function () {
             var toast = Java.use("android.widget.Toast");
             const pkg = getPackageName()
 
-            if (pkg.includes("GraalClassic")) {
+            if (pkg.inclues("GraalClassic")) {
                 toast.makeText(Java.use("android.app.ActivityThread").currentApplication().getApplicationContext(), Java.use("java.lang.String").$new("Carregando launcher para: "+pkg), 1).show();
 
                 {
@@ -135,3 +169,7 @@ if (true) {//getPackageName().startsWith("com.")) {
         });
     });
 }
+}
+
+
+createNewThread(test)
